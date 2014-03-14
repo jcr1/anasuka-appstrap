@@ -94,9 +94,10 @@ section.bespoke-inactive {
 }
 
 #questionairelogo{
-  position: absolute;
+  position: relative;
   top: 10px;
   left: 20px;
+  z-index: 9999;
 }
 
 .questionaire-footer{
@@ -120,7 +121,7 @@ s  color: #A2A2A2;
 <div class='classic'>
   <span id='presentation-container'></span>
   <span id='presentation1'></span>
-  <img id='questionairelogo' src='logo1.png' />
+  <a id='questionairelogo' href='/'><img src='logo1.png' /></a>
   <article id="presentation">
     {{#each questions}}
      <section>
