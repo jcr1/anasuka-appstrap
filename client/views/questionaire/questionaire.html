@@ -2,6 +2,26 @@
 <style>
 /* CSS declarations go here */
 
+
+#presentation-container{
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e6e6e6 100%);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#presentation1{
+  background: url('theme/img/bg_diamond.png') left bottom repeat-x;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 200px;
+}
+
 article {
   -webkit-perspective: 600px;
   -moz-perspective: 600px;
@@ -55,9 +75,10 @@ section.bespoke-inactive {
 }
 
 .bespoke-progress-bar{
-  margin-top: 12px;
-  background: #F9B727;
-  height: 4px;
+  margin-top: 0px;
+  background: #008792;
+  height: 2px;
+  position: fixed;
 }
 
 .loading{
@@ -79,7 +100,8 @@ section.bespoke-inactive {
 }
 </style>
 <div class='classic'>
-
+  <span id='presentation-container'></span>
+  <span id='presentation1'></span>
   <article id="presentation">
     {{#each questions}}
      <section>
@@ -164,11 +186,16 @@ section.bespoke-inactive {
             <td></td>
           </tr>
         </table>
+        <div style='text-align: center;'>
+          <a href="/analysis" class="btn btn-primary btn-lg">Invest Now! <i class="fa fa-arrow-right"></i></a><br/><br/>
+          <a href="#">Save Portfolio</a><br/><br/>
+          <a href="#">Schedule a consult</a>
+        </div>
       </div>
 
     </div>
 
-    <div class='row'>
+<!--     <div class='row'>
       <div class="col-md-8 col-md-offset-2">
           <br/><br/><br/><br/>
           {{#if done}}
@@ -181,11 +208,11 @@ section.bespoke-inactive {
             <span class="input-group-btn">
               <button id='submit' class="btn btn-default" type="button">Submit</button>
             </span>
-          </div><!-- /input-group -->
+          </div>
           {{/if}}
           <br/><br/><br/><br/>
       </div>
-    </div>
+    </div> -->
 
   {{/if}}
   </div>

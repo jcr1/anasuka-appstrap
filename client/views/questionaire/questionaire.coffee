@@ -162,7 +162,34 @@ Template.finalslide.rendered = ->
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 5'
 
-  d3ish = ->
+  tabulate = (data, columns) ->
+    table = d3.select('#tablee').append('table')
+      .attr('class', 'table')
+    thead = table.append("thead")
+    tbody = table.append("tbody")
+    
+    # append the header row
+    thead.append("tr").selectAll("th").data(columns).enter().append("th").text (column) ->
+      column
+    
+    # create a row for each object in the data
+    rows = tbody.selectAll("tr").data(data).enter().append("tr").style('border-left', (d, i) -> "20px solid #{color i}")
+    
+    # create a cell in each row for each column
+    cells = rows.selectAll("td").data((row) ->
+      console.log row, 'row'
+      c = columns.map (column) ->
+        column: column
+        value: row[column]
+      console.log c, 'columns'
+      c
+
+    ).enter().append("td").text((d) ->
+      d.value
+    )
+    table
+
+  Meteor.autorun ->
     data = _.map(window.breakdown, (i) ->
       name : i.name
       symbol : i.symbol
@@ -172,9 +199,10 @@ Template.finalslide.rendered = ->
     console.log data, 'data from breakdown'
 
     total = d3.sum(data, (d) ->
+      console.log d, 'data'
       d3.sum d3.values(d)
     )
-
+    
     vis = d3.select("#chart1")
       .append("svg:svg")
       .data([data])
@@ -226,7 +254,7 @@ Template.finalslide.rendered = ->
         .on("mouseout", (d) ->
           d3.select(this).select("path").transition().duration(100).attr "d", arc
           textTop.text("TOTAL").attr "y", -10
-          textBottom.text "$" + total.toFixed(2)
+          textBottom.text "$" + (Session.get 'amount')
           return
         )
 
@@ -236,33 +264,6 @@ Template.finalslide.rendered = ->
       ).attr "d", arc
 
     console.log data, 'data'
-
-    tabulate = (data, columns) ->
-      table = d3.select('#tablee').append('table')
-        .attr('class', 'table')
-      thead = table.append("thead")
-      tbody = table.append("tbody")
-      
-      # append the header row
-      thead.append("tr").selectAll("th").data(columns).enter().append("th").text (column) ->
-        column
-      
-      # create a row for each object in the data
-      rows = tbody.selectAll("tr").data(data).enter().append("tr").style('border-left', (d, i) -> "20px solid #{color i}")
-      
-      # create a cell in each row for each column
-      cells = rows.selectAll("td").data((row) ->
-        console.log row, 'row'
-        c = columns.map (column) ->
-          column: column
-          value: row[column]
-        console.log c, 'columns'
-        c
-
-      ).enter().append("td").text((d) ->
-        d.value
-      )
-      table
 
     tabulate(data, ["name", "symbol", "weight", "value"])
 
@@ -312,7 +313,6 @@ Template.finalslide.rendered = ->
 
     # legend.on 'mouseover', ->
     #   console.log 'mouseover'
-  d3ish()
 
 Template.finalslide.events
   'click #submit': (e, t) ->

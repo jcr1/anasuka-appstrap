@@ -192,7 +192,7 @@
 	background: transparent;
 }
 .classic a {
-	color: rgb(243, 111, 86);
+	//color: rgb(243, 111, 86);
 }
 .classic section.bespoke-before {
 	-webkit-transform: translate3d(-1920px, 0, 0);
