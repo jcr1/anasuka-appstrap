@@ -13,6 +13,9 @@ Router.map ->
       Meteor.subscribe 'allQuestions'
     fastRender: true
 
+  @route "dashboard",
+    path: "/dashboard"
+
   @route 'whoarewe',
     path: "/whoarewe"
     after: ->
