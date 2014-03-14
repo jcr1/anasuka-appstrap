@@ -11,7 +11,7 @@ $(document).ready(function() {
   
   //colour switch - demo only
   // --------------------------------
-  var defaultColour = 'green';
+  var defaultColour = 'blue';
   $('.colour-switcher a').click(function() {
     var c = $(this).attr('href').replace('#','');
     var cacheBuster = 3 * Math.floor(Math.random() * 6);

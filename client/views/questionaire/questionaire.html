@@ -1,4 +1,83 @@
 <template name="questionaire">
+<style>
+/* CSS declarations go here */
+
+article {
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  -ms-perspective: 600px;
+  -o-perspective: 600px;
+  perspective: 600px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+section {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  background: #c0c0c0;
+  border-radius: 5px;
+  width: 512px;
+  height: 380px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -256px;
+  margin-top: -220px;
+  opacity: 0;
+}
+body,
+section.bespoke-slide {
+  -webkit-transition: -webkit-transform .7s ease, opacity .7s ease, background-color .7s ease;
+  -moz-transition: -moz-transform .7s ease, opacity .7s ease, background-color .7s ease;
+  -ms-transition: -ms-transform .7s ease, opacity .7s ease, background-color .7s ease;
+  -o-transition: -o-transform .7s ease, opacity .7s ease, background-color .7s ease;
+  transition: transform .7s ease, opacity .7s ease, background-color .7s ease;
+}
+
+section.bespoke-slide{
+  //padding: 10px;
+}
+
+section.bespoke-active {
+  opacity: 1;
+  z-index: 1;
+}
+section.bespoke-inactive {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bespoke-progress-bar{
+  margin-top: 12px;
+  background: #F9B727;
+  height: 4px;
+}
+
+.loading{
+  display: none;
+  text-align: center;
+}
+
+#finalslide{
+  position: absolute;
+  width: 1000px !important;
+  margin-left: -500px;
+  left: 50%;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
+}
+</style>
 <div class='classic'>
 
   <article id="presentation">
@@ -59,25 +138,11 @@
       </div>
 
       <div class="col-xs-6">
-        <div id="chart1"></div>
-        <div id='tablee'></div>
-      
-        <table class="table">
-          <tr>
-            <th>Asset Class</th>
-            <th>ETF Symbol</th>
-            <th>Weight</th>
-            <th>Value</th>
-          </tr>
-          {{#each breakdown}}
-          <tr>
-            <td>{{name}}</td>
-            <td>{{symbol}}</td>
-            <td>{{value}}</td>
-            <td>${{test value}}</td>
-          </tr>
-          {{/each}}
-        </table>
+        <div style='width: 400px'>
+          <h3 style='text-align: center;'>Asset Allocation</h3>
+          <div id="chart1"></div>
+          <div id='tablee'></div>
+        </div>
 
       </div>
 
@@ -86,14 +151,17 @@
           <tr>
             <td>Cost of ETFs</td>
             <td><b>0.3%</b></td>
+            <td><b>$25</b></td>
           </tr>
           <tr>
             <td>Advisory Fee</td>
             <td><b>0.5%</b></td>
+            <td><b>$42</b></td>
           </tr>
           <tr>
             <td>Total Cost</td>
             <td><b>0.8%</b></td>
+            <td></td>
           </tr>
         </table>
       </div>
