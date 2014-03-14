@@ -87,7 +87,7 @@ Template.finalslide.rendered = ->
   ), 0
   console.log score, 'SCORE'
 
-  if score > 3 and score < 9
+  if score >= 3 and score < 9
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.11},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0},
@@ -101,7 +101,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     console.log 'got breakdown 1'
-  else if score > 10 and score < 18
+  else if score >= 10 and score < 18
     window.breakdown = [
       {"name": "US Equities","symbol":"SPY", "value":0.15},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.05},
@@ -116,7 +116,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 2'
-  else if score > 19 and  score < 25
+  else if score >= 19 and  score < 25
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.23},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
@@ -131,7 +131,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 3'
-  else if score > 26 and score < 34
+  else if score >= 26 and score < 34
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.26},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
@@ -146,7 +146,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 4'
-  else if score > 35 and score < 41
+  else if score >= 35 and score < 41
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.35},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.11},
@@ -161,6 +161,79 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 5'
+
+  data = _.map(window.breakdown, (i) ->
+    name : i.name
+    symbol : i.symbol
+    weight: i.value
+    value : (i.value * amount).toFixed(2)
+  )
+  console.log data, 'data from breakdown'
+
+  total = d3.sum(data, (d) ->
+    console.log d, 'data'
+    d3.sum d3.values(d)
+  )
+  
+  vis = d3.select("#chart1")
+    .append("svg:svg")
+    .data([data])
+      .attr("width", w)
+      .attr("height", h)
+    .append("svg:g")
+      .attr("transform", "translate(" + 200 + "," + 200 + ")")
+  
+  textTop = vis.append("text")
+    .attr("dy", ".35em")
+    .style("text-anchor", "middle")
+    .attr("class", "textTop")
+    .text("TOTAL")
+    .attr("y", -10)
+  
+  textBottom = vis.append("text")
+    .attr("dy", ".35em")
+    .style("text-anchor", "middle")
+    .attr("class", "textBottom")
+    .text(total.toFixed(2))
+    .attr("y", 10)
+  
+  arc = d3.svg.arc()
+    .innerRadius(inner)
+    .outerRadius(r)
+  
+  arcOver = d3.svg.arc()
+    .innerRadius(inner + 5)
+    .outerRadius(r + 5)
+  
+  pie = d3.layout.pie().value((d) ->
+    d.value
+  )
+
+  arcs = vis.selectAll("g.slice")
+    .data(pie).enter()
+    .append("svg:g")
+      .attr("class", "slice")
+      .on("mouseover", (d, i) ->
+        console.log i
+        d3.select(this).select("path")
+          .transition()
+          .duration(200)
+          .attr "d", arcOver
+          textTop.text(d3.select(this).datum().data.symbol).attr("y", -10).attr('color')
+          textBottom.text("$" + d3.select(this).datum().data.value).attr "y", 10
+          return
+        )
+      .on("mouseout", (d) ->
+        d3.select(this).select("path").transition().duration(100).attr "d", arc
+        textTop.text("TOTAL").attr "y", -10
+        textBottom.text "$" + (Session.get 'amount')
+        return
+      )
+
+  arcs.append("svg:path")
+    .attr("fill", (d, i) ->
+      color i
+    ).attr "d", arc
 
   tabulate = (data, columns) ->
     table = d3.select('#tablee').append('table')
@@ -189,130 +262,54 @@ Template.finalslide.rendered = ->
     )
     table
 
-  Meteor.autorun ->
-    data = _.map(window.breakdown, (i) ->
-      name : i.name
-      symbol : i.symbol
-      weight: i.value
-      value : (i.value * amount).toFixed(2)
-    )
-    console.log data, 'data from breakdown'
+  tabulate(data, ["name", "symbol", "weight", "value"])
 
-    total = d3.sum(data, (d) ->
-      console.log d, 'data'
-      d3.sum d3.values(d)
-    )
-    
-    vis = d3.select("#chart1")
-      .append("svg:svg")
-      .data([data])
-        .attr("width", w)
-        .attr("height", h)
-      .append("svg:g")
-        .attr("transform", "translate(" + 200 + "," + 200 + ")")
-    
-    textTop = vis.append("text")
-      .attr("dy", ".35em")
-      .style("text-anchor", "middle")
-      .attr("class", "textTop")
-      .text("TOTAL")
-      .attr("y", -10)
-    
-    textBottom = vis.append("text")
-      .attr("dy", ".35em")
-      .style("text-anchor", "middle")
-      .attr("class", "textBottom")
-      .text(total.toFixed(2))
-      .attr("y", 10)
-    
-    arc = d3.svg.arc()
-      .innerRadius(inner)
-      .outerRadius(r)
-    
-    arcOver = d3.svg.arc()
-      .innerRadius(inner + 5)
-      .outerRadius(r + 5)
-    
-    pie = d3.layout.pie().value((d) ->
-      d.value
-    )
+  # table = d3.select('#tablee').append('table')
+  #   .attr('class', 'table')
 
-    arcs = vis.selectAll("g.slice")
-      .data(pie).enter()
-      .append("svg:g")
-        .attr("class", "slice")
-        .on("mouseover", (d, i) ->
-          console.log i
-          d3.select(this).select("path")
-            .transition()
-            .duration(200)
-            .attr "d", arcOver
-            textTop.text(d3.select(this).datum().data.symbol).attr("y", -10).attr('color')
-            textBottom.text("$" + d3.select(this).datum().data.value).attr "y", 10
-            return
-          )
-        .on("mouseout", (d) ->
-          d3.select(this).select("path").transition().duration(100).attr "d", arc
-          textTop.text("TOTAL").attr "y", -10
-          textBottom.text "$" + (Session.get 'amount')
-          return
-        )
+  # tbody = table.append('tbody')
 
-    arcs.append("svg:path")
-      .attr("fill", (d, i) ->
-        color i
-      ).attr "d", arc
+  # rows = tbody.selectAll('tr')
+  #   .data(data).enter()
+  #   .append('tr')
 
-    console.log data, 'data'
+  # cells = rows.selectAll('td')
+  #   .data((row) -> row)
+  #   .enter()
+  #   .append("td")
+  #   .attr('class', (d) -> console.log d, 'cells data')
 
-    tabulate(data, ["name", "symbol", "weight", "value"])
+  # cells = rows.selectAll('td')
+  #   .data((row) -> console.log row)
+  #   .enter()
+  #   .append('td')
+  #   .attr 'class', (d, i) -> console.log d, color i
 
-    # table = d3.select('#tablee').append('table')
-    #   .attr('class', 'table')
+  # legend = d3.select("#chart1").append("svg")
+  #   .attr("class", "legend")
+  #   .attr("width", 100)
+  #   .attr("height", r * 2)
+  # .selectAll("g")
+  #   .data(data).enter()
+  #   .append("g")
+  #     .attr "transform", (d, i) ->
+  #       "translate(0," + i * 25 + ")"
 
-    # tbody = table.append('tbody')
+  # legend.append("rect")
+  #   .attr("width", 16)
+  #   .attr("height", 16)
+  #   .style "fill", (d, i) ->
+  #     color i
 
-    # rows = tbody.selectAll('tr')
-    #   .data(data).enter()
-    #   .append('tr')
+  # legend.append("text")
+  #   .attr("x", 24)
+  #   .attr("y", 7)
+  #   .attr("dy", ".35em")
+  #   .text (d) ->
+  #     d.label
 
-    # cells = rows.selectAll('td')
-    #   .data((row) -> row)
-    #   .enter()
-    #   .append("td")
-    #   .attr('class', (d) -> console.log d, 'cells data')
-
-    # cells = rows.selectAll('td')
-    #   .data((row) -> console.log row)
-    #   .enter()
-    #   .append('td')
-    #   .attr 'class', (d, i) -> console.log d, color i
-
-    # legend = d3.select("#chart1").append("svg")
-    #   .attr("class", "legend")
-    #   .attr("width", 100)
-    #   .attr("height", r * 2)
-    # .selectAll("g")
-    #   .data(data).enter()
-    #   .append("g")
-    #     .attr "transform", (d, i) ->
-    #       "translate(0," + i * 25 + ")"
-
-    # legend.append("rect")
-    #   .attr("width", 16)
-    #   .attr("height", 16)
-    #   .style "fill", (d, i) ->
-    #     color i
-
-    # legend.append("text")
-    #   .attr("x", 24)
-    #   .attr("y", 7)
-    #   .attr("dy", ".35em")
-    #   .text (d) ->
-    #     d.label
-
-    # legend.on 'mouseover', ->
-    #   console.log 'mouseover'
+  # legend.on 'mouseover', ->
+  #   console.log 'mouseover'
 
 Template.finalslide.events
   'click #submit': (e, t) ->
