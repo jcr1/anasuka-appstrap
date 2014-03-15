@@ -87,7 +87,7 @@ Template.finalslide.rendered = ->
   ), 0
   console.log score, 'SCORE'
 
-  if score >= 3 and score < 9
+  if score >= 3 and score <= 9
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.11},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0},
@@ -101,7 +101,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     console.log 'got breakdown 1'
-  else if score >= 10 and score < 18
+  else if score >= 10 and score <= 18
     window.breakdown = [
       {"name": "US Equities","symbol":"SPY", "value":0.15},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.05},
@@ -116,7 +116,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 2'
-  else if score >= 19 and  score < 25
+  else if score >= 19 and score <= 25
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.23},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
@@ -131,7 +131,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 3'
-  else if score >= 26 and score < 34
+  else if score >= 26 and score <= 34
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.26},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
@@ -146,7 +146,7 @@ Template.finalslide.rendered = ->
     ]
     Session.set 'breakdown', breakdown
     console.log 'got breakdown 4'
-  else if score >= 35 and score < 41
+  else if score >= 35 and score <= 41
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.35},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.11},
