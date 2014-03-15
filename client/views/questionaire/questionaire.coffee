@@ -163,10 +163,10 @@ Template.finalslide.rendered = ->
     console.log 'got breakdown 5'
 
   data = _.map(window.breakdown, (i) ->
-    name : i.name
-    symbol : i.symbol
-    weight: i.value
-    value : (i.value * amount).toFixed(2)
+    'Asset Class' : i.name
+    Symbol : i.symbol
+    Percentage: "#{(i.value * 100).toFixed(0)}%"
+    Value : (i.value * amount).toFixed(2)
   )
   console.log data, 'data from breakdown'
 
@@ -206,7 +206,7 @@ Template.finalslide.rendered = ->
     .outerRadius(r + 5)
   
   pie = d3.layout.pie().value((d) ->
-    d.value
+    d.Value
   )
 
   arcs = vis.selectAll("g.slice")
@@ -219,8 +219,8 @@ Template.finalslide.rendered = ->
           .transition()
           .duration(200)
           .attr "d", arcOver
-          textTop.text(d3.select(this).datum().data.symbol).attr("y", -10).attr('color')
-          textBottom.text("$" + d3.select(this).datum().data.value).attr "y", 10
+          textTop.text(d3.select(this).datum().data.Symbol).attr("y", -10).attr('color')
+          textBottom.text("$" + d3.select(this).datum().data.Value).attr "y", 10
           return
         )
       .on("mouseout", (d) ->
@@ -262,7 +262,7 @@ Template.finalslide.rendered = ->
     )
     table
 
-  tabulate(data, ["name", "symbol", "weight", "value"])
+  tabulate(data, ["Asset Class", "Symbol", "Percentage", "Value"])
 
   # table = d3.select('#tablee').append('table')
   #   .attr('class', 'table')
