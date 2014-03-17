@@ -82,6 +82,7 @@ Template.finalslide.rendered = ->
   color = d3.scale.category20c()
   amount = Session.get 'amount'
   answers = Session.get 'finalanswers'
+  comma = d3.format(',.2f')
   score = _.reduce answers, ((memo, num) ->
     memo + num.point
   ), 0
@@ -166,7 +167,8 @@ Template.finalslide.rendered = ->
     'Asset Class' : i.name
     Symbol : i.symbol
     Percentage: "#{(i.value * 100).toFixed(0)}%"
-    Value : (i.value * amount).toFixed(2)
+    value : (i.value * amount).toFixed(2)
+    Value : "$#{comma((i.value * amount).toFixed(2))}"
   )
   console.log data, 'data from breakdown'
 
@@ -194,7 +196,7 @@ Template.finalslide.rendered = ->
     .attr("dy", ".35em")
     .style("text-anchor", "middle")
     .attr("class", "textBottom")
-    .text(total.toFixed(2))
+    .text("$#{comma(total.toFixed(2))}")
     .attr("y", 10)
   
   arc = d3.svg.arc()
@@ -206,7 +208,7 @@ Template.finalslide.rendered = ->
     .outerRadius(r + 5)
   
   pie = d3.layout.pie().value((d) ->
-    d.Value
+    d.value
   )
 
   arcs = vis.selectAll("g.slice")
@@ -220,13 +222,13 @@ Template.finalslide.rendered = ->
           .duration(200)
           .attr "d", arcOver
           textTop.text(d3.select(this).datum().data.Symbol).attr("y", -10).attr('color')
-          textBottom.text("$" + d3.select(this).datum().data.Value).attr "y", 10
+          textBottom.text("$" + comma(d3.select(this).datum().data.value)).attr "y", 10
           return
         )
       .on("mouseout", (d) ->
         d3.select(this).select("path").transition().duration(100).attr "d", arc
         textTop.text("TOTAL").attr "y", -10
-        textBottom.text "$" + (Session.get 'amount')
+        textBottom.text "$" + comma(Session.get 'amount')
         return
       )
 

@@ -49,7 +49,8 @@ section {
   top: 50%;
   left: 50%;
   margin-left: -256px;
-  margin-top: -220px;
+  /*margin-top: -220px; */
+  margin-top: -160px;
   opacity: 0;
 }
 body,
@@ -111,6 +112,10 @@ s  color: #A2A2A2;
   height: 50px;
 }
 
+.user-menu a.btn{
+  margin-top: 10px;
+}
+
 @media (min-width: 1200px) {
   .container {
     width: 1000px;
@@ -121,7 +126,11 @@ s  color: #A2A2A2;
 <div class='classic'>
   <span id='presentation-container'></span>
   <span id='presentation1'></span>
-  <a id='questionairelogo' href='/'><img src='logo1.png' /></a>
+  <div class='container'><div class='row'><div class='col-xs-12'><a id='questionairelogo' href='/'><img src='logo1.png' /></a></div></div></div>
+  <div style='position: absolute; width:100%; z-index: 9999'>
+    <br/>
+    {{>nav}}
+  </div>
   <article id="presentation">
     {{#each questions}}
      <section>
@@ -152,7 +161,7 @@ s  color: #A2A2A2;
       <div class='loading'>
         <h1>Please wait while we create your investment portfolio...</h1>
         <br/>
-        <img src='loading.gif'/>
+        <img src='ajax-loader.gif'/>
       </div>
     </section>
 
@@ -190,21 +199,20 @@ s  color: #A2A2A2;
       </div>
 
       <div class="col-xs-3">
+        <h4 style='text-align: center;'>Monthly Cost of Portfolio</h4>
+        <br/>
         <table class='table' style='text-align: center;'>
           <tr>
             <td>Cost of ETFs</td>
-            <td><b>0.3%</b></td>
             <td><b>$25</b></td>
           </tr>
           <tr>
             <td>Advisory Fee</td>
-            <td><b>0.5%</b></td>
             <td><b>$42</b></td>
           </tr>
           <tr>
             <td>Total Cost</td>
-            <td><b>0.8%</b></td>
-            <td></td>
+            <td><b>$67</b></td>
           </tr>
         </table>
         <div style='text-align: center;'>
@@ -240,7 +248,8 @@ s  color: #A2A2A2;
 </template>
 
 <template name='aboutyou'>
-  <h3>Here's what we know about you,</h3>
+  <h4>Here's what we know about you,</h4>
+  <br/>
   {{#with final}}
     <p>are <b>{{[0].answer}}</b> years old</p>
     <p>have <b>{{[1].answer}}</b> investment experience</p>

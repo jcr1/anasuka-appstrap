@@ -4,7 +4,7 @@ if Questions.find().count() is 0
     qid: 1
     question: "Please tell us your age"
     answers: [
-      answer: "< 25"
+      answer: "Less than 25"
       point: 10
     ,
       answer: "25-39"
@@ -16,7 +16,7 @@ if Questions.find().count() is 0
       answer: "51-60"
       point: 2
     ,
-      answer: "> 60"
+      answer: "Greater than 60"
       point: 0
     ]
 
@@ -53,7 +53,7 @@ if Questions.find().count() is 0
 
   Questions.insert
     qid: 4
-    question: "In 2008 the S&P 500 declined more than 38%, were you more inclined to ..."
+    question: "In 2008 the S&P 500 declined more than 38%, were you more inclined to"
     answers: [
       answer: "Sell"
       point: 0
@@ -69,7 +69,7 @@ if Questions.find().count() is 0
     qid: 5
     question: "Please tell us about your after tax income"
     answers: [
-      answer: "< 15,000"
+      answer: "Less than 15,000"
       point: 0
     ,
       answer: "15,000 - 24,999"
@@ -84,7 +84,7 @@ if Questions.find().count() is 0
       answer: "100,000 - 149,999"
       point: 4
     ,
-      answer: "150,000+"
+      answer: "Greater than 150,000"
       point: 4
     ]
 
@@ -92,7 +92,7 @@ if Questions.find().count() is 0
     qid: 6
     question: "And your cash and liquid assets"
     answers: [
-      answer: "< 25,000"
+      answer: "Less than 25,000"
       point: 1
     ,
       answer: "25,000 - 49,999"
@@ -104,7 +104,7 @@ if Questions.find().count() is 0
       answer: "100,000 - 249,999"
       point: 5
     ,
-      answer: "250,000+"
+      answer: "Greater than 250,000"
       point: 8
     ]
 
