@@ -182,6 +182,7 @@ section.bespoke-inactive {
   </article>
 </div>
 <div class='questionaire-footer'></div>
+{{>modal}}
 </template>
 
 <template name='finalslide'>
@@ -226,9 +227,9 @@ section.bespoke-inactive {
           </tr>
         </table>
         <div style='text-align: center;'>
-          <a href="/analysis" class="btn btn-primary btn-lg">Invest Now! <i class="fa fa-arrow-right"></i></a><br/><br/>
-          <a href="#">Save Portfolio</a><br/><br/>
-          <a href="#">Schedule a consult</a>
+          <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Invest Now! <i class="fa fa-arrow-right"></i></a><br/><br/>
+          <a href="#" data-toggle="modal" data-target="#myModal">Save Portfolio</a><br/><br/>
+          <a href="#" data-toggle="modal" data-target="#myModal">Schedule a consult</a>
         </div>
       </div>
 
