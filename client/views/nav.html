@@ -1,0 +1,156 @@
+<template name='nav'>
+    <div class="container" data-toggle="clingify">
+      <div class="navbar"> 
+        <!--
+      mobile collapse menu button
+      - data-toggle="toggle" = default BS menu
+      - data-toggle="jpanel-menu" = jPanel Menu
+      --> 
+        <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a> 
+        
+        <!--user menu-->
+        <div class="btn-group user-menu pull-right"> <!--<a href="#signup-modal" class="btn btn-primary signup" data-toggle="modal">Sign Up</a>--> <a href="#login-modal" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Login</a> </div>
+        
+        <!--everything within this div is collapsed on mobile-->
+        <div class="navbar-collapse collapse"> 
+          
+          <!--main navigation-->
+          <ul class="nav navbar-nav">
+            <li class="home-link"><a href="index.htm"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
+            <li class="dropdown"> <a href="features.htm" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown">Who We Are</a> 
+              <!-- Dropdown Menu - Mega Menu -->
+              <ul class="dropdown-menu mega-menu" role="menu" aria-labelledby="features-drop">
+                <li role="presentation" class="dropdown-header">Mega Menu with links & text items</li>
+                <li role="presentation">
+                  <ul class="row list-unstyled" role="menu">
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-1.png" alt="Feature 1" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>Mobile Friendly</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-2.png" alt="Feature 2" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>24/7 Support</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-3.png" alt="Feature 2" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>99% Uptime</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="pricing.htm" class="menu-item">How We Invest</a></li>
+            <li><a href="customers.htm" class="menu-item">FAQ</a></li>
+            <!-- <li class="dropdown"> <a href="about.htm" class="dropdown-toggle" id="about-drop" data-toggle="dropdown">About +</a> --> 
+              <!-- Dropdown Menu --> 
+              <!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                <li role="presentation"><a role="menuitem" href="about.htm" tabindex="-1" class="menu-item">About Us</a></li>
+                <li role="presentation"><a role="menuitem" href="team.htm" tabindex="-1" class="menu-item">Our Team</a></li>
+                <li role="presentation"><a role="menuitem" href="contact.htm" tabindex="-1" class="menu-item">Contact</a></li>
+              </ul>
+              -->
+              <!--
+            </li>
+            <li class="dropdown"> <a href="blog.htm" class="dropdown-toggle" id="blog-drop" data-toggle="dropdown">Blog +</a>
+              <!-- Dropdown Menu -->
+              <!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="blog-drop">
+                <li role="presentation"><a role="menuitem" href="blog.htm" tabindex="-1" class="menu-item">Right Sidebar</a></li>
+                <li role="presentation"><a role="menuitem" href="blog-leftbar.htm" tabindex="-1" class="menu-item">Left Sidebar</a></li>
+                <li role="presentation"><a role="menuitem" href="blog-post.htm" tabindex="-1" class="menu-item">Blog Post</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"> <a href="pages.htm" class="dropdown-toggle" id="pages-drop" data-toggle="dropdown">More +</a> 
+              -->
+              <!-- Mega Menu --><!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="pages-drop">
+                <li role="presentation" class="dropdown-header">Pages</li>
+                <li role="presentation"><a role="menuitem" href="login.htm" tabindex="-1" class="menu-item">Login</a></li>
+                <li role="presentation"><a role="menuitem" href="signup.htm" tabindex="-1" class="menu-item">Sign Up</a></li>
+                <li role="presentation"><a role="menuitem" href="starter.htm" tabindex="-1" class="menu-item">Starter Snippets</a></li>
+                <li role="presentation"><a role="menuitem" href="index-static.htm" tabindex="-1" class="menu-item">Homepage Static Banner</a></li>
+                <li role="presentation"><a role="menuitem" href="elements.htm" tabindex="-1" class="menu-item">Theme Elements</a></li>
+                <li role="presentation" class="dropdown-header">Other Goodies</li>
+                <li role="presentation"><a role="menuitem" href="colours.htm" tabindex="-1" class="menu-item">Theme Colours</a></li>
+                <li role="presentation"><a role="menuitem" href="bs-mobile-menu.htm" tabindex="-1" class="menu-item">Bootstrap Mobile Menu</a></li>
+                <li role="presentation"><a role="menuitem" href="navbar-full.htm" tabindex="-1" class="menu-item">Navbar Full Width</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-full.htm" tabindex="-1" class="menu-item">Slider Full Width</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-behind.htm" tabindex="-1" class="menu-item">Slider Behind</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-boxed.htm" tabindex="-1" class="menu-item">Slider Boxed</a></li>
+              </ul>
+            </li> -->
+          </ul>
+        </div> 
+        <!--/.navbar-collapse --> 
+      </div> 
+    </div> 
+</template>
+
+<template name='nav2'>
+    <div class="container" data-toggle="clingify">
+      <div class="navbar"> 
+        <!--
+      mobile collapse menu button
+      - data-toggle="toggle" = default BS menu
+      - data-toggle="jpanel-menu" = jPanel Menu
+      --> 
+        <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a> 
+        
+        <!--everything within this div is collapsed on mobile-->
+        <div class="navbar-collapse collapse"> 
+          
+          <!--main navigation-->
+          <ul class="nav navbar-nav">
+            <li class="home-link"><a href="index.htm"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
+            <li class="dropdown"> <a href="features.htm" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown">Who We Are</a> 
+              <!-- Dropdown Menu - Mega Menu -->
+              <ul class="dropdown-menu mega-menu" role="menu" aria-labelledby="features-drop">
+                <li role="presentation" class="dropdown-header">Mega Menu with links & text items</li>
+                <li role="presentation">
+                  <ul class="row list-unstyled" role="menu">
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-1.png" alt="Feature 1" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>Mobile Friendly</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-2.png" alt="Feature 2" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>24/7 Support</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                    <li class="col-md-4" role="presentation"> <a role="menuitem" href="features.htm" class="img-link"><img src="theme/img/features/feature-3.png" alt="Feature 2" /></a> <a role="menuitem" href="features.htm" tabindex="-1" class="menu-item"><strong>99% Uptime</strong></a> <span>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio!</span> </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="pricing.htm" class="menu-item">How We Invest</a></li>
+            <li><a href="customers.htm" class="menu-item">FAQ</a></li>
+            <!-- <li class="dropdown"> <a href="about.htm" class="dropdown-toggle" id="about-drop" data-toggle="dropdown">About +</a> --> 
+              <!-- Dropdown Menu --> 
+              <!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                <li role="presentation"><a role="menuitem" href="about.htm" tabindex="-1" class="menu-item">About Us</a></li>
+                <li role="presentation"><a role="menuitem" href="team.htm" tabindex="-1" class="menu-item">Our Team</a></li>
+                <li role="presentation"><a role="menuitem" href="contact.htm" tabindex="-1" class="menu-item">Contact</a></li>
+              </ul>
+              -->
+              <!--
+            </li>
+            <li class="dropdown"> <a href="blog.htm" class="dropdown-toggle" id="blog-drop" data-toggle="dropdown">Blog +</a>
+              <!-- Dropdown Menu -->
+              <!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="blog-drop">
+                <li role="presentation"><a role="menuitem" href="blog.htm" tabindex="-1" class="menu-item">Right Sidebar</a></li>
+                <li role="presentation"><a role="menuitem" href="blog-leftbar.htm" tabindex="-1" class="menu-item">Left Sidebar</a></li>
+                <li role="presentation"><a role="menuitem" href="blog-post.htm" tabindex="-1" class="menu-item">Blog Post</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"> <a href="pages.htm" class="dropdown-toggle" id="pages-drop" data-toggle="dropdown">More +</a> 
+              -->
+              <!-- Mega Menu --><!--
+              <ul class="dropdown-menu" role="menu" aria-labelledby="pages-drop">
+                <li role="presentation" class="dropdown-header">Pages</li>
+                <li role="presentation"><a role="menuitem" href="login.htm" tabindex="-1" class="menu-item">Login</a></li>
+                <li role="presentation"><a role="menuitem" href="signup.htm" tabindex="-1" class="menu-item">Sign Up</a></li>
+                <li role="presentation"><a role="menuitem" href="starter.htm" tabindex="-1" class="menu-item">Starter Snippets</a></li>
+                <li role="presentation"><a role="menuitem" href="index-static.htm" tabindex="-1" class="menu-item">Homepage Static Banner</a></li>
+                <li role="presentation"><a role="menuitem" href="elements.htm" tabindex="-1" class="menu-item">Theme Elements</a></li>
+                <li role="presentation" class="dropdown-header">Other Goodies</li>
+                <li role="presentation"><a role="menuitem" href="colours.htm" tabindex="-1" class="menu-item">Theme Colours</a></li>
+                <li role="presentation"><a role="menuitem" href="bs-mobile-menu.htm" tabindex="-1" class="menu-item">Bootstrap Mobile Menu</a></li>
+                <li role="presentation"><a role="menuitem" href="navbar-full.htm" tabindex="-1" class="menu-item">Navbar Full Width</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-full.htm" tabindex="-1" class="menu-item">Slider Full Width</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-behind.htm" tabindex="-1" class="menu-item">Slider Behind</a></li>
+                <li role="presentation"><a role="menuitem" href="flexslider-boxed.htm" tabindex="-1" class="menu-item">Slider Boxed</a></li>
+              </ul>
+            </li> -->
+          </ul>
+        </div> 
+        <!--/.navbar-collapse --> 
+      </div> 
+    </div> 
+</template>

@@ -23,6 +23,9 @@ Template.questionaire.events
     Session.set 'finalanswers', answers
     deck.next()
 
+  "click .back": ->
+    deck.prev()
+
   "click .finish": (e, t) ->
     #console.log t.find('#amount').value
     Session.set 'amount', t.find('#amount').value
@@ -91,13 +94,9 @@ Template.finalslide.rendered = ->
   if score >= 3 and score <= 9
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.11},
-      {"name": "Large Cap Value", "symbol":"IWD", "value":0},
-      {"name": "Small Cap Value", "symbol":"IWM", "value":0},
       {"name": "Non US Equities", "symbol":"EFA", "value":0.09}, 
-      {"name": "Emerging Markets", "symbol":"VWO", "value":0}, 
       {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.35}, 
       {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.3}, 
-      {"name": "US High Yield Bonds", "symbol":"HYG", "value":0}, 
       {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.1}, 
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
@@ -106,9 +105,7 @@ Template.finalslide.rendered = ->
     window.breakdown = [
       {"name": "US Equities","symbol":"SPY", "value":0.15},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.05},
-      {"name": "Small Cap Value", "symbol":"IWM", "value":0},
       {"name": "Non US Equities", "symbol":"EFA", "value":0.15}, 
-      {"name": "Emerging Markets", "symbol":"VWO", "value":0}, 
       {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.21}, 
       {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.21}, 
       {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.04}, 
@@ -121,7 +118,6 @@ Template.finalslide.rendered = ->
     window.breakdown = [
       {"name": "US Equities", "symbol":"SPY", "value":0.23},
       {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
-      {"name": "Small Cap Value", "symbol":"IWM", "value":0},
       {"name": "Non US Equities", "symbol":"EFA", "value":0.2}, 
       {"name": "Emerging Markets", "symbol":"VWO", "value":0.05}, 
       {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.1}, 
@@ -154,10 +150,6 @@ Template.finalslide.rendered = ->
       {"name": "Small Cap Value", "symbol":"IWM", "value":0.05},
       {"name": "Non US Equities", "symbol":"EFA", "value":0.34}, 
       {"name": "Emerging Markets", "symbol":"VWO", "value":0.1}, 
-      {"name": "US Treasury Bonds", "symbol":"TLT", "value":0}, 
-      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0}, 
-      {"name": "US High Yield Bonds", "symbol":"HYG", "value":0}, 
-      {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0}, 
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
