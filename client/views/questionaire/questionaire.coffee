@@ -24,6 +24,8 @@ Template.questionaire.events
     deck.next()
 
   "click .back": ->
+    answers.pop()
+    Session.set 'finalanswers', answers
     deck.prev()
 
   "click .almost-finish": (e, t) ->
