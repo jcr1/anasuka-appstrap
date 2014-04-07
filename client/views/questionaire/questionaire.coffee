@@ -101,6 +101,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     console.log 'got breakdown 1'
+    Session.set 'portfolio', 1
   else if score >= 10 and score <= 18
     window.breakdown = [
       {"name": "US Equities","symbol":"SPY", "value":0.15},
@@ -113,6 +114,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
+    Session.set 'portfolio', 2
     console.log 'got breakdown 2'
   else if score >= 19 and score <= 25
     window.breakdown = [
@@ -127,6 +129,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
+    Session.set 'portfolio', 3
     console.log 'got breakdown 3'
   else if score >= 26 and score <= 34
     window.breakdown = [
@@ -142,6 +145,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
+    Session.set 'portfolio', 4
     console.log 'got breakdown 4'
   else if score >= 35 and score <= 41
     window.breakdown = [
@@ -153,6 +157,7 @@ Template.finalslide.rendered = ->
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
+    Session.set 'portfolio', 5
     console.log 'got breakdown 5'
 
   data = _.map(window.breakdown, (i) ->
@@ -304,6 +309,41 @@ Template.finalslide.rendered = ->
 
   # legend.on 'mouseover', ->
   #   console.log 'mouseover'
+
+Template.finalslide.advisory = ->
+  amount = Session.get 'amount'
+  value = amount * 0.005/12
+  Session.set 'advisory', value
+  value.toFixed(2)
+
+Template.finalslide.monthly = ->
+  amount = Session.get 'amount'
+  if Session.equals('portfolio', 1)
+    value = amount * 0.00015667
+    Session.set 'monthly', value
+    value.toFixed(2)
+  else if Session.equals('portfolio', 2)
+    value = amount * 0.00019042
+    Session.set 'monthly', value
+    value.toFixed(2)
+  else if Session.equals('portfolio', 3)
+    value = amount * 0.00019675
+    Session.set 'monthly', value
+    value.toFixed(2)
+  else if Session.equals('portfolio', 4)
+    value = amount * 0.00019500
+    Session.set 'monthly', value
+    value.toFixed(2)
+  else if Session.equals('portfolio', 5)
+    value = amount * 0.00016942
+    Session.set 'monthly', value
+    value.toFixed(2)
+
+Template.finalslide.total = ->
+  advisory = Session.get 'advisory'
+  monthly = Session.get 'monthly'
+  total = advisory + monthly
+  total.toFixed(2)
 
 Template.finalslide.events
   'click #submit': (e, t) ->
