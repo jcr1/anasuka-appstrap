@@ -26,9 +26,13 @@ Template.questionaire.events
   "click .back": ->
     deck.prev()
 
+  "click .almost-finish": (e, t) ->
+    Session.set 'amount', t.find('#amount').value
+    deck.next()
+
   "click .finish": (e, t) ->
     #console.log t.find('#amount').value
-    Session.set 'amount', t.find('#amount').value
+    Session.set 'email', t.find('#email').value
     $('.loading').fadeIn()
     deck.next()
     setTimeout ->
