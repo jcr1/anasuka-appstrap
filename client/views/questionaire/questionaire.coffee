@@ -19,9 +19,12 @@ Template.questionaire.events
 
   "click .next": ->
     # template data, if any, is available in 'this'
-    answers.push Session.get 'answer'
-    Session.set 'finalanswers', answers
-    deck.next()
+    if $(".bespoke-active input:checked").val()
+      answers.push Session.get 'answer'
+      Session.set 'finalanswers', answers
+      deck.next()
+    else 
+      console.log 'need flash'
 
   "click .back": ->
     answers.pop()
