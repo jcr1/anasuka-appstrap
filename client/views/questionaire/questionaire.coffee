@@ -1,5 +1,4 @@
 Meteor.startup ->
-  Session.set 'finalyet', false
   Session.set 'analysis', false
   window.answers = []
 
@@ -9,6 +8,8 @@ Template.questionaire.questions = ->
 Template.questionaire.created = ->
   console.log 'created'
   Session.set 'rest', true
+  Session.set 'finalyet', false
+
   if Session.equals 'finalyet', false
     console.log 'wow'
     setTimeout ->
