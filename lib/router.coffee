@@ -11,6 +11,7 @@ Router.map ->
     path: "/analysis"
     waitOn: ->
       Meteor.subscribe 'allQuestions'
+      Meteor.subscribe 'allDatas'
     fastRender: true
 
   @route "dashboard",

@@ -1,5 +1,8 @@
 Meteor.publish "allQuestions", ->
-    Questions.find()
+  Questions.find()
+
+Meteor.publish "allDatas", ->
+  Datas.find()
 
 process.env.MAIL_URL = "smtp://postmaster@sandbox18028.mailgun.org:9q3nxrc3rs88@smtp.mailgun.org:587"
 

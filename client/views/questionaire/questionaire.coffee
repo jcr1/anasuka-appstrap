@@ -35,11 +35,28 @@ Template.questionaire.events
     Session.set 'amount', t.find('#amount').value
     deck.next()
 
+    score = _.reduce answers, ((memo, num) ->
+      memo + num.point
+    ), 0
+
+    Session.set 'score', score
+    console.log score, 'SCORE'
+
+    window.time = new Date()
+
+    Datas.insert
+      timestamp: time
+      score: Session.get 'score'
+      investment: Session.get 'amount'
+      answers: Session.get 'finalanswers'
+
   "click .finish": (e, t) ->
-    #console.log t.find('#amount').value
     Session.set 'email', t.find('#email').value
+    Datas.update({_id:Datas.findOne({timestamp: time})['_id']}, {$set:{email:Session.get('email')}})
+
     $('.loading').fadeIn()
     deck.next()
+
     setTimeout ->
       $('.loading').fadeOut()
       deck.next()
@@ -95,9 +112,7 @@ Template.finalslide.rendered = ->
   amount = Session.get 'amount'
   answers = Session.get 'finalanswers'
   comma = d3.format(',.2f')
-  score = _.reduce answers, ((memo, num) ->
-    memo + num.point
-  ), 0
+  score =   Session.get 'score'
   console.log score, 'SCORE'
 
   if score >= 3 and score <= 9
