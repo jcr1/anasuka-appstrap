@@ -1,6 +1,5 @@
 Meteor.startup ->
   Session.set 'analysis', false
-  window.answers = []
 
 Template.questionaire.questions = ->
   Questions.find()
@@ -9,6 +8,8 @@ Template.questionaire.created = ->
   console.log 'created'
   Session.set 'rest', true
   Session.set 'finalyet', false
+  Session.set 'score', 0
+  window.answers = []
 
   if Session.equals 'finalyet', false
     console.log 'wow'
