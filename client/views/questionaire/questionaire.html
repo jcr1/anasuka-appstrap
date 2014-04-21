@@ -82,6 +82,12 @@ section.bespoke-inactive {
   position: fixed;
 }
 
+.flashmsg{
+  display: inline;
+  opacity: 0;
+  color: red;
+}
+
 .loading{
   display: none;
   text-align: center;
@@ -134,7 +140,7 @@ section.bespoke-inactive {
   </div>
   <article id="presentation">
     {{#each questions}}
-     <section>
+    <section>
       <h4>{{question}}</h4>
       <div>
         {{#each answers}}
@@ -146,8 +152,8 @@ section.bespoke-inactive {
         </div>
         {{/each}}
       </div>
-      <a href='#' class='back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="next btn btn-default btn-lg">Next</button>
-      </section>
+      {{>closes}}
+    </section>
     {{/each}}
 
     <section>
@@ -155,7 +161,7 @@ section.bespoke-inactive {
       <br/>
       <input id="amount" type="text" class="form-control input-lg" placeholder="Enter Amount">
       <br/>
-      <a href='#' class='almost-back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="almost-finish btn btn-default btn-lg">Next</button>
+      <a href='#' class='almost-back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="almost-finish btn btn-default btn-lg">Next</button>&nbsp;&nbsp;&nbsp;&nbsp;<div id="almost-flash" class='flashmsg'>Please provide an amount</div>
     </section>
 
     <section>
@@ -163,7 +169,7 @@ section.bespoke-inactive {
       <br/>
       <input id="email" type="text" class="form-control input-lg" placeholder="Enter Email Address">
       <br/>
-      <a href='#' class='finish-back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="finish btn btn-default btn-lg">Create my plan</button>
+      <a href='#' class='finish-back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="finish btn btn-default btn-lg">Create my plan</button>&nbsp;&nbsp;&nbsp;&nbsp;<div id="finish-flash" class='flashmsg'>Please enter email</div>
     </section>
 
     <section>
@@ -182,6 +188,10 @@ section.bespoke-inactive {
 </div>
 <div class='questionaire-footer'></div>
 {{>modal}}
+</template>
+
+<template name='closes'>
+  <a href='#' class='back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="next btn btn-default btn-lg">Next</button>&nbsp;&nbsp;&nbsp;&nbsp;<div class='flashmsg'>Please provide an answer</div>
 </template>
 
 <template name='finalslide'>

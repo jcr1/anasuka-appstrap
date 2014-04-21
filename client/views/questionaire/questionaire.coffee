@@ -17,9 +17,8 @@ Template.questionaire.created = ->
       window.deck = bespoke.from "#presentation", progress: true
     , 500
 
-Template.questionaire.events 
-
-  "click .next": ->
+Template.closes.events 
+  "click .next": (e, t) ->
     # template data, if any, is available in 'this'
     if $(".bespoke-active input:checked").val()
       answers.push Session.get 'answer'
@@ -27,11 +26,20 @@ Template.questionaire.events
       deck.next()
     else 
       console.log 'need flash'
+      $(t.find('.flashmsg')).css
+        opacity: 1
+
+      setTimeout (->
+        $(".flashmsg").css "opacity", "0"
+        return
+      ), 2000
 
   "click .back": ->
     answers.pop()
     Session.set 'finalanswers', answers
     deck.prev()
+
+Template.questionaire.events 
 
   "click .almost-finish": (e, t) ->
     if $("#amount").val().length > 0
@@ -52,6 +60,15 @@ Template.questionaire.events
         score: Session.get 'score'
         investment: Session.get 'amount'
         answers: Session.get 'finalanswers'
+    else
+      console.log 'need flash'
+      $(t.find('#almost-flash')).css
+        opacity: 1
+
+      setTimeout (->
+        $("#almost-flash").css "opacity", "0"
+        return
+      ), 2000
 
   "click .almost-back": ->
     answers.pop()
@@ -72,6 +89,15 @@ Template.questionaire.events
         deck.next()
         Session.set 'finalyet', true
       , 3000
+    else
+      console.log 'need flash'
+      $(t.find('#finish-flash')).css
+        opacity: 1
+
+      setTimeout (->
+        $("#finish-flash").css "opacity", "0"
+        return
+      ), 2000
 
   "click .finish-back": ->
     Session.set 'amount', null
