@@ -230,6 +230,7 @@ Template.home.events
     $('body').removeClass('modal-open')
     $('.modal-backdrop').remove()
 
+Template.footer.events
   'click #go': (e, t) ->
     email_address = $('#email-field').val()
     

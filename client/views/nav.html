@@ -1,4 +1,59 @@
 <template name='nav'>
+<div id="navigation" class="wrapper">
+  <div class="navbar-static-top"> 
+
+    <!--Hidden Header Region-->
+    <div class="header-hidden">
+      <div class="header-hidden-inner container">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <h3>About Us</h3>
+            <p>We believe that professional investment advice should be not be expensive and accessible to everyone.</p>
+            <a href="about.htm" class="btn btn-sm btn-primary">Find out more</a> </div>
+          <div class="col-sm-4 col-md-4"> 
+            <!--@todo: replace with company contact details-->
+            <h3>Contact Us</h3>
+            <address>
+            <p><abbr title="Phone"><i class="fa fa-phone"></i></abbr> 212-966-1212</p>
+            <p><abbr title="Email"><i class="fa fa-envelope"></i></abbr> info@anasuka.com</p>
+            <p><abbr title="Address"><i class="fa fa-home"></i></abbr> 47 Murray Street, New York, NY 10007</p>
+            </address>
+          </div>
+          <div class="col-sm-4 col-md-4"> 
+            <!--Colour Switch for demo - @todo: remove in production-->
+            <div class="colour-switcher">
+              <h3>Theme Colours</h3>
+              <a href="#green" class="green active" data-toggle="tooltip" data-placement="bottom" data-original-title="Green (Default)">Green</a> <a href="#red" class="red" data-toggle="tooltip" data-placement="bottom" data-original-title="Red">Red</a> <a href="#blue" class="blue" data-toggle="tooltip" data-placement="bottom" data-original-title="Blue">Blue</a>
+              <p>Cookies are NOT enabled so colour selection is not persistent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--Header & Branding region-->
+    <div class="header">
+      <div class="header-inner container">
+        <div class="row">
+          <div class="col-md-8"> 
+            <!--branding/logo--> 
+            <a class="navbar-brand" href="/" title="Home">
+            <h1><span>Anasuka</span></h1>
+            </a>
+            <div class="slogan">Smart Investment Management</div>
+          </div>
+          
+          <!--header rightside-->
+          <div class="col-md-4"> 
+            <!--social media icons-->
+            <div class="social-media"> 
+              <!--@todo: replace with company social media details--> 
+              <!-- <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> --> </div>
+          </div>
+        </div>
+        <!-- <div id="header-hidden-link"> <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a> </div> -->
+      </div>
+    </div>
     <div class="container" data-toggle="clingify">
       <div class="navbar"> 
         <!--
@@ -16,8 +71,8 @@
           
           <!--main navigation-->
           <ul class="nav navbar-nav">
-            <li class="home-link"><a href="index.htm"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
-            <li class="dropdown"> <a href="features.htm" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown">Who We Are</a> 
+            <li class="home-link"><a href="/"><i class="fa fa-home"></i><span class="hidden">Home</span></a></li>
+            <li class="dropdown"> <a href="/whoarewe" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown">Who We Are</a> 
               <!-- Dropdown Menu - Mega Menu -->
               <ul class="dropdown-menu mega-menu" role="menu" aria-labelledby="features-drop">
                 <li role="presentation" class="dropdown-header">Mega Menu with links & text items</li>
@@ -30,8 +85,8 @@
                 </li>
               </ul>
             </li>
-            <li><a href="pricing.htm" class="menu-item">How We Invest</a></li>
-            <li><a href="customers.htm" class="menu-item">FAQ</a></li>
+            <li><a href="/howweinvest" class="menu-item">How We Invest</a></li>
+            <li><a href="/faq" class="menu-item">FAQ</a></li>
             <!-- <li class="dropdown"> <a href="about.htm" class="dropdown-toggle" id="about-drop" data-toggle="dropdown">About +</a> --> 
               <!-- Dropdown Menu --> 
               <!--
@@ -153,4 +208,7 @@
         <!--/.navbar-collapse --> 
       </div> 
     </div> 
+
+  </div> 
+</div>
 </template>

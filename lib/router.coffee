@@ -26,3 +26,8 @@ Router.map ->
     path: "/howweinvest"
     after: ->
       Session.set 'url', "invest"
+
+  @route 'faq',
+    path: "/faq"
+    after: ->
+      Session.set 'url', "invest"

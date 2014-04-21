@@ -135,7 +135,7 @@ section.bespoke-inactive {
   <article id="presentation">
     {{#each questions}}
      <section>
-      <h2>{{question}}</h2>
+      <h4>{{question}}</h4>
       <div>
         {{#each answers}}
         <div class="radio">
@@ -146,8 +146,7 @@ section.bespoke-inactive {
         </div>
         {{/each}}
       </div>
-      <button type="button" class="next btn btn-default btn-lg">Next</button>
-      &nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='back'>Back</a>
+      <a href='#' class='back'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="next btn btn-default btn-lg">Next</button>
       </section>
     {{/each}}
 
