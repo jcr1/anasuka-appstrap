@@ -229,3 +229,15 @@ Template.home.events
     Router.go('/dashboard')
     $('body').removeClass('modal-open')
     $('.modal-backdrop').remove()
+
+  'click #go': (e, t) ->
+    email_address = $('#email-field').val()
+    
+    console.log email_address, 'go!'
+    $('#confirm').modal()
+    t.find('#email-field').value = ''
+
+    Meteor.call('sendEmail', email_address)
+  
+    Emails.insert
+      email: email_address

@@ -13,5 +13,5 @@ Meteor.methods
     Email.send
       to: email
       from: "info@anasuka.com"
-      subject: "[ANASUKA] Congratulations!"
-      text: "We will share with you some news about us in a near future. See you soon! Party on!"
+      subject: "[ANASUKA] Newsletter"
+      text: "Thanks for signing up!"
