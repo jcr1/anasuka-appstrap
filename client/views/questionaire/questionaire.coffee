@@ -378,31 +378,37 @@ Template.finalslide.rendered = ->
 Template.finalslide.advisory = ->
   amount = Session.get 'amount'
   value = amount * 0.005/12
-  Session.set 'advisory', value
-  value.toFixed(2)
+  rounded =  Math.round(value) #to the nearest dollar
+  Session.set 'advisory', rounded
+  rounded.toFixed(2)
 
 Template.finalslide.monthly = ->
   amount = Session.get 'amount'
   if Session.equals('portfolio', 1)
     value = amount * 0.00015667
-    Session.set 'monthly', value
-    value.toFixed(2)
+    rounded = Math.round(value)
+    Session.set 'monthly', rounded
+    rounded.toFixed(2)
   else if Session.equals('portfolio', 2)
     value = amount * 0.00019042
-    Session.set 'monthly', value
-    value.toFixed(2)
+    rounded = Math.round(value)
+    Session.set 'monthly', rounded
+    rounded.toFixed(2)
   else if Session.equals('portfolio', 3)
     value = amount * 0.00019675
-    Session.set 'monthly', value
-    value.toFixed(2)
+    rounded = Math.round(value)
+    Session.set 'monthly', rounded
+    rounded.toFixed(2)
   else if Session.equals('portfolio', 4)
     value = amount * 0.00019500
-    Session.set 'monthly', value
-    value.toFixed(2)
+    rounded = Math.round(value)
+    Session.set 'monthly', rounded
+    rounded.toFixed(2)
   else if Session.equals('portfolio', 5)
     value = amount * 0.00016942
-    Session.set 'monthly', value
-    value.toFixed(2)
+    rounded = Math.round(value)
+    Session.set 'monthly', rounded
+    rounded.toFixed(2)
 
 Template.finalslide.total = ->
   advisory = Session.get 'advisory'
