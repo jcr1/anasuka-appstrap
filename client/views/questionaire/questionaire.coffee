@@ -34,36 +34,49 @@ Template.questionaire.events
     deck.prev()
 
   "click .almost-finish": (e, t) ->
-    Session.set 'amount', t.find('#amount').value
-    deck.next()
+    if $("#amount").val().length > 0
+      Session.set 'amount', t.find('#amount').value
+      deck.next()
 
-    score = _.reduce answers, ((memo, num) ->
-      memo + num.point
-    ), 0
+      score = _.reduce answers, ((memo, num) ->
+        memo + num.point
+      ), 0
 
-    Session.set 'score', score
-    console.log score, 'SCORE'
+      Session.set 'score', score
+      console.log score, 'SCORE'
 
-    window.time = new Date()
+      window.time = new Date()
 
-    Datas.insert
-      timestamp: time
-      score: Session.get 'score'
-      investment: Session.get 'amount'
-      answers: Session.get 'finalanswers'
+      Datas.insert
+        timestamp: time
+        score: Session.get 'score'
+        investment: Session.get 'amount'
+        answers: Session.get 'finalanswers'
+
+  "click .almost-back": ->
+    answers.pop()
+    Session.set 'finalanswers', answers
+    console.log 'almost back'
+    deck.prev()
 
   "click .finish": (e, t) ->
-    Session.set 'email', t.find('#email').value
-    Datas.update({_id:Datas.findOne({timestamp: time})['_id']}, {$set:{email:Session.get('email')}})
+    if $("#email").val().length > 0
+      Session.set 'email', t.find('#email').value
+      Datas.update({_id:Datas.findOne({timestamp: time})['_id']}, {$set:{email:Session.get('email')}})
 
-    $('.loading').fadeIn()
-    deck.next()
-
-    setTimeout ->
-      $('.loading').fadeOut()
+      $('.loading').fadeIn()
       deck.next()
-      Session.set 'finalyet', true
-    , 3000
+
+      setTimeout ->
+        $('.loading').fadeOut()
+        deck.next()
+        Session.set 'finalyet', true
+      , 3000
+
+  "click .finish-back": ->
+    Session.set 'amount', null
+    console.log 'finish back'
+    deck.prev()
 
   'change input[type=radio]': (e, t) ->
     console.log @
