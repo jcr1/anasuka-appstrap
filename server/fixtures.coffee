@@ -36,26 +36,6 @@ if Questions.find().count() is 0
 
   Questions.insert
     qid: 3
-    question: "When will you need to withdraw funds from this portfolio?"
-    answers: [
-      answer: "less than 1 year"
-      point: 0
-    ,
-      answer: "1 - 5 years"
-      point: 2
-    ,
-      answer: "6 - 10 years"
-      point: 4
-    ,
-      answer: "10 - 20 years"
-      point: 6
-    ,
-      answer: "more than 20 years"
-      point: 10
-    ]
-
-  Questions.insert
-    qid: 4
     question: "What is your investment goal?"
     answers: [
       answer: "Retirement"
@@ -78,6 +58,27 @@ if Questions.find().count() is 0
     ,
       answer: "Rainy Day"
       point: 0
+    ]
+
+
+  Questions.insert
+    qid: 4
+    question: "When will you need to withdraw funds from this portfolio?"
+    answers: [
+      answer: "less than 1 year"
+      point: 0
+    ,
+      answer: "1 - 5 years"
+      point: 2
+    ,
+      answer: "6 - 10 years"
+      point: 4
+    ,
+      answer: "10 - 20 years"
+      point: 6
+    ,
+      answer: "more than 20 years"
+      point: 10
     ]
 
   Questions.insert
