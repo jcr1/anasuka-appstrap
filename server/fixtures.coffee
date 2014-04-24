@@ -111,7 +111,7 @@ if Questions.find().count() is 0
 
   Questions.insert
     qid: 7
-    question: "Knowing that investment portfolios are volatile, how long are you willing to wait regain any losses?"
+    question: "Knowing that investment portfolios are volatile, how long are you willing to wait to regain any losses?"
     answers: [
       answer: "Less than 3 months"
       point: 0
