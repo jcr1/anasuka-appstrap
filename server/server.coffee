@@ -12,6 +12,6 @@ Meteor.methods
     console.log email, 'email'
     Email.send
       to: email
-      from: "info@anasuka.com"
+      from: "info@wealthyx.com"
       subject: "[ANASUKA] Newsletter"
       text: "Thanks for signing up!"
