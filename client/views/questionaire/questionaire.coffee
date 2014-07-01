@@ -158,39 +158,40 @@ Template.finalslide.rendered = ->
 
   if score >= 5 and score <= 20
     window.breakdown = [
-      {"name": "US Equities", "symbol":"SPY", "value":0.11},
-      {"name": "Non US Equities", "symbol":"EFA", "value":0.09}, 
-      {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.35}, 
-      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.3}, 
-      {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.1}, 
-      {"name": "Cash", "symbol":"CASH", "value":0.05}
+      {"name": "US Treasury Bonds", "symbol":"AGG", "value":0.25}, 
+      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.25}, 
+      {"name": "Short-Term Inflation-Protection", "symbol":"VTIP", "value":0.10}, 
+      {"name": "Non US Treasury Bonds", "symbol":"BNDX", "value":0.1}, 
+      {"name": "US Equities", "symbol":"VTI", "value":0.11},
+      {"name": "Non US Equities", "symbol":"VEA", "value":0.09}, 
+      {"name": "Cash", "symbol":"CASH", "value":0.10}
     ]
     console.log 'got breakdown 1'
     Session.set 'portfolio', 1
   else if score >= 21 and score <= 30
     window.breakdown = [
-      {"name": "US Equities","symbol":"SPY", "value":0.15},
-      {"name": "Large Cap Value", "symbol":"IWD", "value":0.05},
-      {"name": "Non US Equities", "symbol":"EFA", "value":0.15}, 
-      {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.21}, 
       {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.21}, 
-      {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.04}, 
-      {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.14}, 
-      {"name": "Cash", "symbol":"CASH", "value":0.05}
+      {"name": "US Treasury Bonds", "symbol":"AGG", "value":0.18}, 
+      {"name": "Non US Treasury Bonds", "symbol":"BNDX", "value":0.11},
+      {"name": "Short-Term Inflation-Protection", "symbol":"VTIP", "value":0.07},  
+      {"name": "US Equities","symbol":"VTI", "value":0.15},
+      {"name": "Non US Equities", "symbol":"VEA", "value":0.15}, 
+      {"name": "Large Cap Value", "symbol":"VTV", "value":0.05},
+      {"name": "Cash", "symbol":"CASH", "value":0.08}
     ]
     Session.set 'breakdown', breakdown
     Session.set 'portfolio', 2
     console.log 'got breakdown 2'
   else if score >= 31 and score <= 51
     window.breakdown = [
-      {"name": "US Equities", "symbol":"SPY", "value":0.23},
-      {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
-      {"name": "Non US Equities", "symbol":"EFA", "value":0.2}, 
+      {"name": "US Equities", "symbol":"VTI", "value":0.23},
+      {"name": "Non US Equities", "symbol":"VEA", "value":0.2}, 
+      {"name": "Large Cap Value", "symbol":"VTV", "value":0.07},
       {"name": "Emerging Markets", "symbol":"VWO", "value":0.05}, 
-      {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.1}, 
-      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.12}, 
-      {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.05}, 
-      {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.13}, 
+      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.14}, 
+      {"name": "Non US Treasury Bonds", "symbol":"BNDX", "value":0.13}, 
+      {"name": "US Treasury Bonds", "symbol":"AGG", "value":0.08}, 
+      {"name": "Short-Term Inflation-Protection", "symbol":"VTIP", "value":0.05},  
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
@@ -198,15 +199,13 @@ Template.finalslide.rendered = ->
     console.log 'got breakdown 3'
   else if score >= 52 and score <= 61
     window.breakdown = [
-      {"name": "US Equities", "symbol":"SPY", "value":0.26},
-      {"name": "Large Cap Value", "symbol":"IWD", "value":0.07},
-      {"name": "Small Cap Value", "symbol":"IWM", "value":0.04},
-      {"name": "Non US Equities", "symbol":"EFA", "value":0.26}, 
+      {"name": "US Equities", "symbol":"VTI", "value":0.26},
+      {"name": "Non US Equities", "symbol":"VEA", "value":0.26}, 
+      {"name": "Large Cap Value", "symbol":"VTV", "value":0.11},
       {"name": "Emerging Markets", "symbol":"VWO", "value":0.07}, 
-      {"name": "US Treasury Bonds", "symbol":"TLT", "value":0.06}, 
-      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.06}, 
-      {"name": "US High Yield Bonds", "symbol":"HYG", "value":0.04}, 
-      {"name": "Non US Treasury Bonds", "symbol":"BWX", "value":0.09}, 
+      {"name": "US Corporate Bonds", "symbol":"LQD", "value":0.10}, 
+      {"name": "Non US Treasury Bonds", "symbol":"BNDX", "value":0.09}, 
+      {"name": "US Treasury Bonds", "symbol":"AGG", "value":0.06}, 
       {"name": "Cash", "symbol":"CASH", "value":0.05}
     ]
     Session.set 'breakdown', breakdown
@@ -214,12 +213,10 @@ Template.finalslide.rendered = ->
     console.log 'got breakdown 4'
   else if score >= 62 and score <= 77
     window.breakdown = [
-      {"name": "US Equities", "symbol":"SPY", "value":0.35},
-      {"name": "Large Cap Value", "symbol":"IWD", "value":0.11},
-      {"name": "Small Cap Value", "symbol":"IWM", "value":0.05},
-      {"name": "Non US Equities", "symbol":"EFA", "value":0.34}, 
-      {"name": "Emerging Markets", "symbol":"VWO", "value":0.1}, 
-      {"name": "Cash", "symbol":"CASH", "value":0.05}
+      {"name": "US Equities", "symbol":"VTI", "value":0.35},
+      {"name": "Non US Equities", "symbol":"VEA", "value":0.34}, 
+      {"name": "Large Cap Value", "symbol":"VTV", "value":0.21},
+      {"name": "Emerging Markets", "symbol":"VWO", "value":0.1}
     ]
     Session.set 'breakdown', breakdown
     Session.set 'portfolio', 5
@@ -385,27 +382,27 @@ Template.finalslide.advisory = ->
 Template.finalslide.monthly = ->
   amount = Session.get 'amount'
   if Session.equals('portfolio', 1)
-    value = amount * 0.00015667
+    value = amount * 0.00008425
     rounded = Math.round(value)
     Session.set 'monthly', rounded
     rounded.toFixed(2)
   else if Session.equals('portfolio', 2)
-    value = amount * 0.00019042
+    value = amount * 0.00008617
     rounded = Math.round(value)
     Session.set 'monthly', rounded
     rounded.toFixed(2)
   else if Session.equals('portfolio', 3)
-    value = amount * 0.00019675
+    value = amount * 0.00008825
     rounded = Math.round(value)
     Session.set 'monthly', rounded
     rounded.toFixed(2)
   else if Session.equals('portfolio', 4)
-    value = amount * 0.00019500
+    value = amount * 0.00008433
     rounded = Math.round(value)
     Session.set 'monthly', rounded
     rounded.toFixed(2)
   else if Session.equals('portfolio', 5)
-    value = amount * 0.00016942
+    value = amount * 0.00007883
     rounded = Math.round(value)
     Session.set 'monthly', rounded
     rounded.toFixed(2)
