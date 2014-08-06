@@ -97,7 +97,7 @@ if Questions.find().count() is 0
 
   Questions.insert
     qid: 6
-    question: "In 2008 the stock market declined almost 40% in a 3 month period. What would you do with your portfolio if this was to happen again?"
+    question: "In 2008, the stock market declined almost 40% in a 3 month period. What would you do with your portfolio if this was to happen again?"
     answers: [
       answer: "Sell"
       point: 0
